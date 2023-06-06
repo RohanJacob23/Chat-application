@@ -24,7 +24,8 @@ export default function ChatArea({
   };
 
   useEffect(() => {
-    socket = io("http://localhost:5000");
+    socket = io("http://localhost:5000", { autoConnect: false });
+    socket.connect();
     socket.emit("connected user", { id: userId });
     socket.on("chat message", ({ message }) => {
       setChat((prev) => [...prev, message]);

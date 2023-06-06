@@ -1,6 +1,4 @@
-import Header from "@/components/Header";
 import Contacts from "@/components/Contacts";
-import SetToLocalStorage from "@/utils/SetToLocalStorage";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";

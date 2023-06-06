@@ -42,6 +42,7 @@ export default function LayoutHeader({
   const [noEmail, setNoEmail] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  // const url = "https://chat-application-ynit.onrender.com/api";
   const url = "http://localhost:5000/api";
   const friendRequestTitle = "Friend Requests";
   const sendFriendRequestTitle = "Send a Friend Request";

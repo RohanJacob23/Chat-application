@@ -10,9 +10,7 @@ dotenv.config();
 const io = new Server(httpServer, { cors: "*" });
 
 const route = require("./routes/route");
-const connectedUser = require("./listeners/connectedUser");
-const chatMessage = require("./listeners/chatMessage");
-const onDisconnect = require("./listeners/onDisconnect");
+const listeners = require("./listeners/listeners");
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -20,12 +18,11 @@ app.use(cors());
 
 app.use("/api", route);
 
-let onlineUsers = [];
+// let onlineUsers = [];
+// const onlineUsers = require("./listeners/onlineUsers");
 
 const onConnection = (socket) => {
-  connectedUser(socket, onlineUsers);
-  chatMessage(socket, io, onlineUsers);
-  onDisconnect(socket, onlineUsers);
+  listeners(socket, io);
 };
 io.on("connection", onConnection);
 
