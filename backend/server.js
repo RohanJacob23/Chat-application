@@ -5,6 +5,8 @@ const app = express();
 const httpServer = createServer(app);
 const morgan = require("morgan");
 const cors = require("cors");
+const dotenv = require("dotenv");
+dotenv.config();
 const io = new Server(httpServer, { cors: "*" });
 
 const route = require("./routes/route");
@@ -27,6 +29,6 @@ const onConnection = (socket) => {
 };
 io.on("connection", onConnection);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 httpServer.listen(PORT, () => console.log(`listening on port ${PORT}`));
