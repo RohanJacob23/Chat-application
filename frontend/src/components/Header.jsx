@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-export default function pHeader({ name, from, profile }) {
+export default function Header({ name, from, profile }) {
   const router = useRouter();
   return (
     <>

@@ -17,7 +17,7 @@ model Friends {
 
 model Message {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  time           DateTime @db.Date
+  time           DateTime @default(now())
   messageContent String
   receiverId     String   @db.ObjectId
   sendersId      String   @db.ObjectId

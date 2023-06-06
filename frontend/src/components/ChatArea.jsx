@@ -32,7 +32,7 @@ export default function ChatArea({
     socket.on("chat message", ({ message }) => {
       setChat((prev) => [...prev, message]);
     });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     const element = document.getElementById("target");
