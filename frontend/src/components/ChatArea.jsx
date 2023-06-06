@@ -19,6 +19,7 @@ export default function ChatArea({
 
   const handleInput = async (e) => {
     e.preventDefault();
+    if (typedMessage === "") return;
     socket.emit("chat message", { userId, friendsId, message: typedMessage });
     setTypedMessage("");
   };
