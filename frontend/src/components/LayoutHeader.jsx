@@ -104,12 +104,16 @@ export default function LayoutHeader({
   };
 
   const acceptFriendRequest = (friendId) => {
+    toast({
+      title: "Please wait for few seconds!!!",
+      action: <ToastAction altText="Done">Ok!</ToastAction>,
+    });
     axios
       .post(`${url}/acceptRequest`, { userId, friendId })
       .catch((err) => console.log(err))
       .finally(() => {
-        toast({ title: "Friend Request Accepted!!" });
         router.refresh();
+        toast({ title: "Friend Request Accepted!!" });
       });
   };
 

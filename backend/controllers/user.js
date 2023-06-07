@@ -81,6 +81,22 @@ const sendFriendRequest = async (req, res) => {
     return;
   }
 
+  // check if the sender is already friend with the receiver
+  const checkIfAlreadyFriends = findFriend.friends.friendId.filter(
+    (id) => id === senderId
+  );
+  const alreadySentFriendRequest = findFriend.friends.friendRequest.filter(
+    (id) => id === senderId
+  );
+  console.log(checkIfAlreadyFriends, alreadySentFriendRequest);
+  if (checkIfAlreadyFriends.length > 0) {
+    res.json({ error: "already friend" });
+    return;
+  } else if (alreadySentFriendRequest.length > 0) {
+    res.json({ error: "Already sent a friend request" });
+    return;
+  }
+
   const friendList = await prisma.friends.update({
     where: { userId: findFriend.id },
     data: { friendRequest: { push: senderId } },
